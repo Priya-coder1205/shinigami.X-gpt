@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shinigami.X-gpt
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: OPENROUTER_API_KEY
+        value: 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   # 🔁 Replace with your actual key
+      
