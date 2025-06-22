@@ -12,17 +12,25 @@ def get_chatgpt_response(prompt):
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://github.com/Priya-coder1205",  # Replace with any URL
+        "HTTP-Referer": "https://github.com/Priya-coder1205",
         "X-Title": "whatsapp-agent"
     }
     data = {
-        "model": "openai/gpt-3.5-turbo",  # or any supported one like meta/llama-3
-        "messages": [
-            {"role": "user", "content": prompt}
-        ]
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [{"role": "user", "content": prompt}]
     }
+
     response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
-    return response.json()['choices'][0]['message']['content']
+
+    try:
+        response.raise_for_status()
+        json_response = response.json()
+        if 'choices' in json_response:
+            return json_response['choices'][0]['message']['content']
+        else:
+            return "Error: 'choices' not found in OpenRouter response."
+    except Exception as e:
+        return f"OpenRouter API Error: {str(e)}"
 
 @app.route("/", methods=["GET"])
 def home():
