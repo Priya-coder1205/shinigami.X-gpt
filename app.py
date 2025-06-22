@@ -10,10 +10,11 @@ OPENROUTER_API_KEY = "sk-or-v1-6fffa2a3569d16123acfed89c62160f79f2c32e1a1c66a52c
 
 def get_chatgpt_response(prompt):
     headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://shinigami-x.onrender.com",
-        "X-Title": "whatsapp-agent"
+    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "HTTP-Referer": "https://shinigami-x.onrender.com",  # or your GitHub repo URL
+    "X-Title": "whatsapp-agent"
     }
     data = {
         "model": "openai/gpt-3.5-turbo",
