@@ -12,7 +12,7 @@ def get_chatgpt_response(prompt):
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://github.com/Priya-coder1205",
+        "HTTP-Referer": "https://shinigami-x.onrender.com",
         "X-Title": "whatsapp-agent"
     }
     data = {
